@@ -7,6 +7,8 @@ pub fn read_input_from<R: BufRead>(reader: R) -> Vec<String> {
         .collect()
 }
 
+// Il est obligé de passer par cette fonction, lisant l'autre fonction,
+// Car sinon on ne peut pas faire le test unitaire.
 pub fn read_input() -> Vec<String> {
     read_input_from(std::io::stdin().lock())
 }
@@ -18,8 +20,8 @@ mod tests {
 
     #[test]
     fn input_test() {
-        let mock_input = "Hello\nWorld\n!\n";
-        let reader = Cursor::new(mock_input);
+        let test_input = "Hello\nWorld\n!\n";
+        let reader = Cursor::new(test_input);
 
         let input = read_input_from(reader);
 
