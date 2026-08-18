@@ -1,6 +1,6 @@
-pub fn format_input(input: Vec<String>) -> (String, String) {
-    let anfield = input[0].clone();
-    let piece = input[1].clone();
+pub fn format_input(data_input: Vec<String>) -> (String, String) {
+    let anfield = data_input[0].clone();
+    let piece = data_input[1].clone();
     (anfield, piece)
 }
 

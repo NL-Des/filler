@@ -1,7 +1,7 @@
 use std::io::BufRead;
 
-pub fn read_input_from<R: BufRead>(reader: R) -> Vec<String> {
-    reader
+pub fn read_input_from<R: BufRead>(data_input: R) -> Vec<String> {
+    data_input
         .lines()
         .map(|line| line.expect("filler/solution/src/input/input.rs : Reading input error"))
         .collect()
@@ -21,9 +21,9 @@ mod tests {
     #[test]
     fn input_test() {
         let test_input = "Hello\nWorld\n!\n";
-        let reader = Cursor::new(test_input);
+        let data_input = Cursor::new(test_input);
 
-        let input = read_input_from(reader);
+        let input = read_input_from(data_input);
 
         assert_eq!(input.len(), 3);
         assert_eq!(input[0], "Hello");

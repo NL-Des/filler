@@ -10,8 +10,8 @@ pub fn validate_input(anfield: &str, piece: &str) -> (bool, String) {
     if piece.is_empty(){
         return false, String::from("piece is empty.");
     }
-    if !piece.chars().all(|c| matches!(c, '.' | '$' | 's' | '@' | 'a')) {
+    if !piece.chars().all(|c| matches!(c, '.' | '#')) {
         return false, String::from("piece contains invalid characters.");
     }
-    true
+    true, String::from("Input is valid.")
 }
