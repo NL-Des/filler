@@ -9,7 +9,7 @@ mod test {
     use super::*;
 
     #[test]
-    fn test_format_input() {
+    fn format_input_test() {
         let input = vec![
             String::from("Anfield"),
             String::from("Piece"),
