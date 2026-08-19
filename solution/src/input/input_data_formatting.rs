@@ -1,9 +1,11 @@
 pub fn reading_input(data_input: Vec<String>, mut player: char) -> (char, char, char) {
     let mut x:char = '0';
     let mut y:char = '0';
+    let mut table:Vec<String> = Vec::new();
     
     // Lecture de chaque ligne.
     for line in data_input {
+        // Si la ligne ne contient que des espaces, on l'ignore.
 
         // Si la ligne donne l'information si nous sommes le joueur 1 ou 2.
         if line.starts_with("$$$ exec p") {
@@ -22,6 +24,15 @@ pub fn reading_input(data_input: Vec<String>, mut player: char) -> (char, char, 
                 y = parts[2].chars().next().unwrap_or('0');
             }
         }
+
+        // Si la ligne donne les coordonnées du tableau de jeu.
+        // Elle ne sera pas recherchée grâce aux différents filtres dans les if.
+
+        if line.contains(&['.', 's', '$', 'a', '@', ' ']) && line.contains(char::is_numeric) {
+            table.push(line);
+        }
+
+        }
+
+        (player, x, y)
     }
-    (player, x, y)
-}
