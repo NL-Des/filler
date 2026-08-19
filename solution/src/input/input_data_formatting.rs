@@ -1,7 +1,10 @@
-pub fn reading_input(data_input: Vec<String>, mut player: char) -> (char, char, char) {
+pub fn reading_input(data_input: Vec<String>, mut player: char) -> (char, char, char, Vec<String>, char, char, Vec<String>) {
     let mut x:char = '0';
     let mut y:char = '0';
     let mut table:Vec<String> = Vec::new();
+    let mut x2:char = '0';
+    let mut y2:char = '0';
+    let mut piece:Vec<String> = Vec::new();
     
     // Lecture de chaque ligne.
     for line in data_input {
@@ -28,11 +31,26 @@ pub fn reading_input(data_input: Vec<String>, mut player: char) -> (char, char, 
         // Si la ligne donne les coordonnées du tableau de jeu.
         // Elle ne sera pas recherchée grâce aux différents filtres dans les if.
 
+        // Si la ligne contient des caractères faisant partie du tableau de jeu.
         if line.contains(&['.', 's', '$', 'a', '@', ' ']) && line.contains(char::is_numeric) {
-            table.push(line);
+            table.push(line.clone());
         }
 
+        // Si la ligne donne les coordonnées de la pièce.
+        if line.starts_with("Piece") {
+            let parts2: Vec<&str> = line.split_whitespace().collect();
+            if parts2.len() >= 3 {
+                x2 = parts2[1].chars().next().unwrap_or('0');
+                y2 = parts2[2].chars().next().unwrap_or('0');
+            }
         }
 
-        (player, x, y)
+        // Si la ligne contient des caractères spécifiques à la pièce à poser.
+        if line.contains('0') && line.contains('.') {
+            piece.push(line.clone());
+        }
+
+    }
+
+        (player, x, y, table, x2, y2, piece)
     }
