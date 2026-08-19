@@ -32,7 +32,7 @@ pub fn reading_input(data_input: Vec<String>, mut player: char) -> (char, char, 
         // Elle ne sera pas recherchée grâce aux différents filtres dans les if.
 
         // Si la ligne contient des caractères faisant partie du tableau de jeu.
-        if line.contains(&['.', 's', '$', 'a', '@', ' ']) && line.contains(char::is_numeric) {
+        if line.contains(&['.', 's', '$', 'a', '@', ' ']) && line.contains(char::is_numeric) && line.len() == x as usize {
             table.push(line.clone());
         }
 
