@@ -6,17 +6,15 @@ mod input_data_formatting;
 mod data_validation;
 
 use input::read_input;
-use input_data_formatting::format_input;
-use data_validation::validate_input;
+use input_data_formatting::reading_input;
 
 fn main() {
-    let data_input = read_input();
-    let (anfield, piece) = format_input(data_input);
-    let (is_input_ok, error_message) = validate_input(&anfield, &piece);
+    let player: char = 'O';
+    loop {
+        // Lecture de chaque ligne reçue.
+        let data_input = read_input();
 
-    if is_input_ok == false {
-        println!("{}",error_message);
-        return;
+        let test = reading_input(data_input, player);
     }
 
 

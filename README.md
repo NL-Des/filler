@@ -9,6 +9,10 @@
 
 - `Terminator` is a very strong robot so it's optional to beat him.
 - For M1 Macs use `m1_robots` and `m1_game_engine`.
+
+## Commande de lancement de deux robots :
+`docker run -v "$(pwd)/solution":/filler/solution -it filler`
+`./linux_game_engine -f maps/map01 -p1 linux_robots/bender -p2 linux_robots/terminator`
   
 ## Tests
 Pour lancer les tests unitaires et vérifier la fonctionnalité du programme : `cargo test`
